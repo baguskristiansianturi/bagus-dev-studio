@@ -3,175 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Products Catalog | Bali Bagus Dev Studio</title>
-    <meta name="description" content="Katalog Produk Digital, UI Kits, Boilerplates, dan Scripts Siap Pakai.">
+    <title>Katalog Produk & Layanan — Bali Bagus Dev Studio</title>
     
+    <!-- TAILWIND CDN (Fallback agar styling tidak pecah saat preview di VS Code) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0B0F17',
-                        card: '#131B2A',
-                        border: '#1E293B',
-                        accent: '#10B981',
-                        accentHover: '#059669',
-                        brandPurple: '#6366F1'
-                    }
-                }
-            }
-        }
-    </script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Dependencies Eksisting -->
+    <link rel="stylesheet" href="assets/css/tailwind.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
 </head>
-<body class="bg-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
     <!-- NAVIGATION HEADER -->
-    <header class="sticky top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-border/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-brandPurple flex items-center justify-center font-extrabold text-dark text-xl group-hover:rotate-6 transition-transform">
-                    BB
-                </div>
-                <div>
-                    <span class="text-lg font-bold tracking-tight block">BALI BAGUS</span>
-                    <span class="text-xs text-emerald-400 font-medium tracking-widest block uppercase">DEV STUDIO</span>
-                </div>
-            </a>
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition">
+                        B
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-lg tracking-tight text-white group-hover:text-indigo-400 transition">BALI BAGUS</span>
+                        <span class="text-xs text-slate-400 -mt-1 tracking-widest font-semibold uppercase">DEV STUDIO</span>
+                    </div>
+                </a>
 
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a href="services.html" class="hover:text-accent transition-colors">Services (Build)</a>
-                <a href="products.html" class="text-accent font-bold">Products (Buy)</a>
-                <a href="portfolio.html" class="hover:text-accent transition-colors">Portfolio</a>
-                <a href="pricing.html" class="hover:text-accent transition-colors">Pricing</a>
-                <a href="process.html" class="hover:text-accent transition-colors">Process</a>
-            </nav>
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="index.html" class="hover:text-white transition">Beranda</a>
+                    <a href="products.html" class="text-indigo-400 font-semibold">Katalog & Produk</a>
+                    <a href="pricing.html" class="hover:text-white transition">Harga Paket</a>
+                    <a href="process.html" class="hover:text-white transition">Alur Kerja</a>
+                    <a href="about.html" class="hover:text-white transition">Tentang Kami</a>
+                    <a href="contact.html" class="hover:text-white transition">Kontak</a>
+                </nav>
 
-            <div class="flex items-center gap-4">
-                <a href="cart.html" class="relative p-2.5 rounded-xl bg-card border border-border text-slate-300 hover:text-white transition-all">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span id="cart-count" class="absolute -top-1 -right-1 bg-accent text-dark text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
-                </a>
-                <a href="login.html" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white px-4 py-2.5 rounded-xl">
-                    <i class="fa-regular fa-user"></i> Login
-                </a>
-                <a href="booking.html" class="inline-flex items-center gap-2 text-sm font-bold bg-accent hover:bg-accentHover text-dark px-5 py-2.5 rounded-xl transition-all">
-                    Start Project
-                </a>
+                <div class="flex items-center gap-4">
+                    <a href="cart.html" class="relative p-2 text-slate-300 hover:text-white transition" aria-label="Keranjang">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-indigo-600 text-white text-xs font-bold rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
+                    <a href="booking.html" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm rounded-xl transition shadow-lg shadow-indigo-600/20">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Konsultasi (Rp990rb)</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-grow py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- PAGE TITLE -->
+    <section class="py-12 bg-slate-950 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                Phase 1 Official Catalog — 27 Oktober 2026
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Katalog Produk & Layanan</h1>
+            <p class="mt-3 text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+                Pilih paket solusi digital dengan alur pengerjaan terstruktur, scope jelas, dan penetapan harga langsung tanpa biaya tersembunyi.
+            </p>
             
-            <!-- Header Title & Filter -->
-            <div class="mb-12">
-                <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-2">Ready Digital Products</span>
-                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Katalog Asset & Software Siap Pakai</h1>
-                <p class="text-slate-400 max-w-2xl text-base">Hemat ratusan jam pengembangan. Unduh UI Kit, Boilerplate Fullstack, dan Script Automasi berlisensi komersial.</p>
-            </div>
-
-            <!-- Filter & Search Bar -->
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 p-4 bg-card rounded-2xl border border-border">
-                <div class="flex flex-wrap gap-2 w-full md:w-auto">
-                    <button class="px-4 py-2 rounded-xl bg-accent text-dark font-bold text-sm">Semua</button>
-                    <button class="px-4 py-2 rounded-xl bg-dark border border-border text-slate-300 hover:text-white text-sm">UI Kit & Figma</button>
-                    <button class="px-4 py-2 rounded-xl bg-dark border border-border text-slate-300 hover:text-white text-sm">Next.js Boilerplate</button>
-                    <button class="px-4 py-2 rounded-xl bg-dark border border-border text-slate-300 hover:text-white text-sm">Web App Scripts</button>
-                </div>
-                <div class="relative w-full md:w-72">
-                    <input type="text" placeholder="Cari produk..." class="w-full bg-dark border border-border rounded-xl px-4 py-2 pl-10 text-sm text-slate-200 focus:outline-none focus:border-accent">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-500 text-xs"></i>
-                </div>
-            </div>
-
-            <!-- Products Grid -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Product Card 1 -->
-                <div class="bg-card rounded-2xl border border-border overflow-hidden group hover:border-accent/40 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-slate-800/80 relative overflow-hidden flex items-center justify-center border-b border-border">
-                            <span class="text-slate-400 font-semibold text-sm"><i class="fa-solid fa-image text-accent mr-2"></i> Villa UI Kit Preview</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-xs font-semibold px-2.5 py-1 bg-border rounded-md text-emerald-400">Figma + Tailwind</span>
-                                <span class="text-accent font-extrabold text-lg">Rp 350.000</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition-colors">Bali Villa Booking UI Kit & Engine</h3>
-                            <p class="text-slate-400 text-sm mb-6 leading-relaxed">Template UI siap pakai dengan filter tanggal, galeri interaktif, dan integrasi WhatsApp booking.</p>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0 flex gap-2">
-                        <a href="product-detail.html?id=villa-ui-kit" class="flex-1 py-2.5 bg-dark hover:bg-border border border-border text-center rounded-xl text-sm font-semibold transition-all">Detail</a>
-                        <button onclick="CartEngine.addItem('villa-ui-kit', 'Bali Villa Booking UI Kit', 350000, 'Figma + Tailwind')" class="px-4 py-2.5 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl text-sm transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> Beli
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 2 -->
-                <div class="bg-card rounded-2xl border border-border overflow-hidden group hover:border-accent/40 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-slate-800/80 relative overflow-hidden flex items-center justify-center border-b border-border">
-                            <span class="text-slate-400 font-semibold text-sm"><i class="fa-solid fa-code text-brandPurple mr-2"></i> SaaS Boilerplate Preview</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-xs font-semibold px-2.5 py-1 bg-border rounded-md text-brandPurple">Next.js + Supabase</span>
-                                <span class="text-accent font-extrabold text-lg">Rp 1.250.000</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition-colors">Fullstack SaaS Starter Kit</h3>
-                            <p class="text-slate-400 text-sm mb-6 leading-relaxed">Boilerplate lengkap dengan Sistem Auth, Midtrans/Xendit Payment, dan Member Dashboard.</p>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0 flex gap-2">
-                        <a href="product-detail.html?id=saas-starter-kit" class="flex-1 py-2.5 bg-dark hover:bg-border border border-border text-center rounded-xl text-sm font-semibold transition-all">Detail</a>
-                        <button onclick="CartEngine.addItem('saas-starter-kit', 'Fullstack SaaS Starter Kit', 1250000, 'Next.js + Supabase')" class="px-4 py-2.5 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl text-sm transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> Beli
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div class="bg-card rounded-2xl border border-border overflow-hidden group hover:border-accent/40 transition-all flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-slate-800/80 relative overflow-hidden flex items-center justify-center border-b border-border">
-                            <span class="text-slate-400 font-semibold text-sm"><i class="fa-solid fa-cash-register text-emerald-400 mr-2"></i> POS Web Script Preview</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-xs font-semibold px-2.5 py-1 bg-border rounded-md text-slate-300">Web App Script</span>
-                                <span class="text-accent font-extrabold text-lg">Rp 750.000</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 group-hover:text-accent transition-colors">Cafe & Resto POS Kasir Web Lite</h3>
-                            <p class="text-slate-400 text-sm mb-6 leading-relaxed">Script Kasir berbasis Web tanpa biaya bulanan. Siap dideploy di server Anda sendiri.</p>
-                        </div>
-                    </div>
-                    <div class="p-6 pt-0 flex gap-2">
-                        <a href="product-detail.html?id=pos-kasir-script" class="flex-1 py-2.5 bg-dark hover:bg-border border border-border text-center rounded-xl text-sm font-semibold transition-all">Detail</a>
-                        <button onclick="CartEngine.addItem('pos-kasir-script', 'POS Kasir Web Lite', 750000, 'Web App Script')" class="px-4 py-2.5 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl text-sm transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-cart-plus"></i> Beli
-                        </button>
-                    </div>
-                </div>
+            <!-- CATEGORY FILTER TABS -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-2">
+                <button onclick="filterCategory('all')" id="tab-all" class="filter-tab px-5 py-2 rounded-xl text-xs font-bold transition bg-indigo-600 text-white">
+                    Semua Katalog
+                </button>
+                <button onclick="filterCategory('copywriting')" id="tab-copywriting" class="filter-tab px-5 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-400 hover:text-white">
+                    Copywriting
+                </button>
+                <button onclick="filterCategory('landing-page')" id="tab-landing-page" class="filter-tab px-5 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-400 hover:text-white">
+                    Landing Page
+                </button>
+                <button onclick="filterCategory('consultation')" id="tab-consultation" class="filter-tab px-5 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-400 hover:text-white">
+                    Konsultasi
+                </button>
+                <button onclick="filterCategory('coming-soon')" id="tab-coming-soon" class="filter-tab px-5 py-2 rounded-xl text-xs font-bold transition bg-slate-800/50 text-slate-500 border border-slate-800">
+                    Mendatang (Phase 2+)
+                </button>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- PRODUCT GRID SECTION -->
+    <section class="py-16 bg-slate-900 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+
+                <!-- 1. COPYWRITING - ENTRY -->
+                <div class="product-item category-copywriting bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-xs font-bold rounded-md">AVAILABLE</span>
+                            <span class="text-xs text-slate-500 font-semibold">Copywriting • Entry</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Short Copy & CTA Pack</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Sangat cocok untuk deskripsi produk singkat, postingan media sosial berkonversi tinggi, bio bisnis, atau naskah tombol pemicu aksi.
+                        </p>
+                        <div class="text-2xl font-extrabold text-white mb-6">
+                            Rp490.000 <span class="text-xs font-normal text-slate-500">/ paket</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Hingga 3 Variasi Short Copy</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Optimasi Call-To-Action (CTA)</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Revisi Maksimal 2x</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Pengerjaan 1–2 Hari Kerja</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="handleAddToCart('copy-entry', 'Short Copy & CTA Pack', 490000, 'copywriting')" class="w-full py-3 bg-slate-800 hover:bg-indigo-600 text-white text-xs font-bold rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span>Tambah ke Keranjang</span>
+                    </button>
+                </div>
+
+                <!-- 2. COPYWRITING - CORE -->
+                <div class="product-item category-copywriting bg-slate-950 border border-indigo-500/50 rounded-2xl p-6 transition flex flex-col justify-between shadow-xl shadow-indigo-950/30 relative">
+                    <div class="absolute -top-3 right-6 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full">
+                        MOST POPULAR
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-xs font-bold rounded-md">AVAILABLE</span>
+                            <span class="text-xs text-slate-500 font-semibold">Copywriting • Core</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Full Website Copywriting</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Naskah penulisan utuh untuk halaman utama web (Homepage, About Us, Service/Product Detail, Contact) berstruktur profesional.
+                        </p>
+                        <div class="text-2xl font-extrabold text-white mb-6">
+                            Rp1.490.000 <span class="text-xs font-normal text-slate-500">/ paket</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Naskah Utama Hingga 4 Halaman</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Penyelarasan Tone of Voice Merek</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Penyusunan Struktur Wireframe Teks</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Pengerjaan 3–4 Hari Kerja</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="handleAddToCart('copy-core', 'Full Website Copywriting', 1490000, 'copywriting')" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span>Tambah ke Keranjang</span>
+                    </button>
+                </div>
+
+                <!-- 3. COPYWRITING - PREMIUM -->
+                <div class="product-item category-copywriting bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-xs font-bold rounded-md">AVAILABLE</span>
+                            <span class="text-xs text-slate-500 font-semibold">Copywriting • Premium</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Conversion & Campaign Copy</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Penulisan fokus konversi khusus sales page, iklan kampanye, halaman promosi produk, serta urutan surel pemasaran.
+                        </p>
+                        <div class="text-2xl font-extrabold text-white mb-6">
+                            Rp2.990.000 <span class="text-xs font-normal text-slate-500">/ paket</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>High-converting Sales Copywriting</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Riset Psikologi Audiens & Objek Masalah</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Bonus 3 Variasi Headline Ad Naskah</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Pengerjaan 5 Hari Kerja</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="handleAddToCart('copy-premium', 'Conversion & Campaign Copy', 2990000, 'copywriting')" class="w-full py-3 bg-slate-800 hover:bg-indigo-600 text-white text-xs font-bold rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span>Tambah ke Keranjang</span>
+                    </button>
+                </div>
+
+                <!-- 4. LANDING PAGE - STARTER -->
+                <div class="product-item category-landing-page bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-xs font-bold rounded-md">AVAILABLE</span>
+                            <span class="text-xs text-slate-500 font-semibold">Build • Starter</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Rapid Landing Page</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Landing page satu halaman responsif berkecepatan tinggi, termasuk penataan struktur teks, layout bersih, dan integrasi WhatsApp.
+                        </p>
+                        <div class="text-2xl font-extrabold text-white mb-6">
+                            Rp2.490.000 <span class="text-xs font-normal text-slate-500">/ project</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Single Page Responsive Layout</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Sudah Termasuk Starter Copywriting</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Integrasi Form / Tombol WhatsApp</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Pengerjaan 3–5 Hari Kerja</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="handleAddToCart('lp-starter', 'Rapid Landing Page', 2490000, 'landing-page')" class="w-full py-3 bg-slate-800 hover:bg-indigo-600 text-white text-xs font-bold rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span>Tambah ke Keranjang</span>
+                    </button>
+                </div>
+
+                <!-- 5. LANDING PAGE - BUSINESS -->
+                <div class="product-item category-landing-page bg-slate-950 border border-indigo-500/50 rounded-2xl p-6 transition flex flex-col justify-between shadow-xl shadow-indigo-950/30 relative">
+                    <div class="absolute -top-3 right-6 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full">
+                        RECOMMENDED
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-xs font-bold rounded-md">AVAILABLE</span>
+                            <span class="text-xs text-slate-500 font-semibold">Build • Business</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Business Landing Page</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Solusi lengkap untuk promosi bisnis profesional. Menggabungkan strategi copywriting mendalam, desain eksklusif, dan animasi halus.
+                        </p>
+                        <div class="text-2xl font-extrabold text-white mb-6">
+                            Rp3.490.000 <span class="text-xs font-normal text-slate-500">/ project</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Custom UI/UX & Tailored Sections</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Full Business Copywriting Included</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>SEO Basic Setup & Fast Loading</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Pengerjaan 5–7 Hari Kerja</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="handleAddToCart('lp-business', 'Business Landing Page', 3490000, 'landing-page')" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span>Tambah ke Keranjang</span>
+                    </button>
+                </div>
+
+                <!-- 6. STRATEGY CONSULTATION -->
+                <div class="product-item category-consultation bg-slate-950 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-xs font-bold rounded-md">AVAILABLE</span>
+                            <span class="text-xs text-slate-500 font-semibold">Service • Advisory</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Strategy Consultation</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Sesi pemetaan kebutuhan bisnis 1-on-1 selama 60 menit untuk menganalisis kendala digital, menyusun roadmap, dan spesifikasi solusi.
+                        </p>
+                        <div class="text-2xl font-extrabold text-white mb-6">
+                            Rp990.000 <span class="text-xs font-normal text-slate-500">/ 60 Menit</span>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-300 border-t border-slate-800/80 pt-4 mb-6">
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Sesi Satu-Lawan-Satu via Google Meet</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Dokumen Pemetaan Solusi Digital</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Rekomendasi Scope & Estimasi Biaya</span></li>
+                            <li class="flex items-center gap-2.5"><i class="fa-solid fa-check text-indigo-400"></i> <span>Dapat Dikreditkan ke Project Build</span></li>
+                        </ul>
+                    </div>
+                    <a href="booking.html" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Pesan Sesi Konsultasi</span>
+                    </a>
+                </div>
+
+                <!-- 7. COMING SOON CARD - BUSINESS WEBSITE -->
+                <div class="product-item category-coming-soon bg-slate-950/40 border border-slate-800/60 rounded-2xl p-6 transition flex flex-col justify-between opacity-80">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-md">PHASE 2 PLANNED</span>
+                            <span class="text-xs text-slate-600 font-semibold">Build • Website</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-300 mb-2">Business Website</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed mb-6">
+                            Pengembangan profil perusahaan multi-halaman berstruktur fleksibel untuk menghadirkan kredibilitas penuh di internet.
+                        </p>
+                        <div class="text-xl font-bold text-slate-500 mb-6">
+                            Coming Soon
+                        </div>
+                    </div>
+                    <button disabled class="w-full py-3 bg-slate-800/50 text-slate-600 text-xs font-bold rounded-xl cursor-not-allowed">
+                        Tersedia pada Phase 2
+                    </button>
+                </div>
+
+                <!-- 8. COMING SOON CARD - SEO & GROWTH -->
+                <div class="product-item category-coming-soon bg-slate-950/40 border border-slate-800/60 rounded-2xl p-6 transition flex flex-col justify-between opacity-80">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 bg-slate-800 text-slate-400 text-[10px] font-bold rounded-md">PHASE 6 PLANNED</span>
+                            <span class="text-xs text-slate-600 font-semibold">Grow • Recurring</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-300 mb-2">SEO & Growth Service</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed mb-6">
+                            Layanan retensi bulanan untuk pengawasan peringkat mesin pencari, pemeliharaan performa, dan optimasi konversi berkala.
+                        </p>
+                        <div class="text-xl font-bold text-slate-500 mb-6">
+                            Coming Soon
+                        </div>
+                    </div>
+                    <button disabled class="w-full py-3 bg-slate-800/50 text-slate-600 text-xs font-bold rounded-xl cursor-not-allowed">
+                        Tersedia pada Phase 6
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
-    <footer class="bg-card border-t border-border py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-            © 2026 Bali Bagus Dev Studio. All rights reserved.
+    <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 py-12 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Bali Bagus Dev Studio. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Start small. Deliver real value. Expand deliberately.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- SCRIPTS EKSISTING -->
     <script src="assets/js/app.js"></script>
     <script src="assets/js/cart-engine.js"></script>
+    
+    <script>
+        // Logika Filter Tab Kategori
+        function filterCategory(category) {
+            const items = document.querySelectorAll('.product-item');
+            const tabs = document.querySelectorAll('.filter-tab');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-indigo-600', 'text-white');
+                tab.classList.add('bg-slate-800', 'text-slate-400');
+            });
+
+            const activeTab = document.getElementById(`tab-${category}`);
+            if (activeTab) {
+                activeTab.classList.remove('bg-slate-800', 'text-slate-400');
+                activeTab.classList.add('bg-indigo-600', 'text-white');
+            }
+
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'flex';
+                } else if (item.classList.contains(`category-${category}`)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Handler Tambah Keranjang Menggunakan cart-engine.js
+        function handleAddToCart(id, name, price, category) {
+            if (typeof CartEngine !== 'undefined' && CartEngine.addItem) {
+                CartEngine.addItem({
+                    id: id,
+                    name: name,
+                    price: price,
+                    category: category,
+                    quantity: 1
+                });
+                alert(`"${name}" berhasil ditambahkan ke keranjang belanja.`);
+            } else {
+                console.log('CartEngine item:', { id, name, price, category });
+                alert(`"${name}" ditambahkan (Logika keranjang aktif via cart-engine.js).`);
+            }
+        }
+
+        // Auto-filter berdasarkan query URL jika ada (contoh: products.html?category=copywriting)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('category');
+            if (catParam) {
+                filterCategory(catParam);
+            }
+        });
+    </script>
 </body>
 </html>

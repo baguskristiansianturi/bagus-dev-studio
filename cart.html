@@ -3,134 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang Belanja | Bali Bagus Dev Studio</title>
+    <title>Keranjang Belanja — Bali Bagus Dev Studio</title>
     
+    <!-- TAILWIND CDN (Fallback agar styling tidak pecah saat preview di VS Code) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0B0F17',
-                        card: '#131B2A',
-                        border: '#1E293B',
-                        accent: '#10B981',
-                        accentHover: '#059669',
-                        brandPurple: '#6366F1'
-                    }
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Dependencies Eksisting -->
+    <link rel="stylesheet" href="assets/css/tailwind.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" defer></script>
 </head>
-<body class="bg-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- HEADER -->
-    <header class="sticky top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-border/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-brandPurple flex items-center justify-center font-extrabold text-dark text-xl">BB</div>
-                <div>
-                    <span class="text-lg font-bold block">BALI BAGUS</span>
-                    <span class="text-xs text-emerald-400 font-medium tracking-widest block uppercase">DEV STUDIO</span>
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition">
+                        B
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-lg tracking-tight text-white group-hover:text-indigo-400 transition">BALI BAGUS</span>
+                        <span class="text-xs text-slate-400 -mt-1 tracking-widest font-semibold uppercase">DEV STUDIO</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="index.html" class="hover:text-white transition">Beranda</a>
+                    <a href="products.html" class="hover:text-white transition">Katalog & Produk</a>
+                    <a href="pricing.html" class="hover:text-white transition">Harga Paket</a>
+                    <a href="process.html" class="hover:text-white transition">Alur Kerja</a>
+                    <a href="about.html" class="hover:text-white transition">Tentang Kami</a>
+                    <a href="contact.html" class="hover:text-white transition">Kontak</a>
+                </nav>
+
+                <div class="flex items-center gap-4">
+                    <a href="cart.html" class="relative p-2 text-indigo-400 font-semibold transition" aria-label="Keranjang">
+                        <i class="fa-solid fa-cart-shopping text-lg"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-indigo-600 text-white text-xs font-bold rounded-full flex items-center justify-center hidden">0</span>
+                    </a>
                 </div>
-            </a>
-            <div class="flex items-center gap-4">
-                <a href="products.html" class="text-sm font-medium text-slate-300 hover:text-accent">Lanjut Belanja</a>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-extrabold mb-8 flex items-center gap-3">
-                <i class="fa-solid fa-cart-shopping text-accent"></i> Keranjang Belanja Anda
-            </h1>
+    <!-- HEADER TITLE -->
+    <section class="py-12 bg-slate-950 border-b border-slate-800 text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold text-white">Keranjang Layanan Anda</h1>
+            <p class="text-slate-400 text-xs sm:text-sm mt-2">
+                Tinjau kembali pilihan paket dan produk digital sebelum melanjutkan ke tahap pemesanan.
+            </p>
+        </div>
+    </section>
 
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Cart Items List (Left 2 Cols) -->
-                <div class="lg:col-span-2 space-y-4" id="cart-items-container">
-                    <!-- Populated dynamically via JS -->
+    <!-- MAIN CART CONTENT -->
+    <section class="py-16 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+                <!-- ITEM LIST -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div id="cart-items-container" class="space-y-4">
+                        <!-- Render item keranjang via JS/LocalStorage -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-center text-slate-400 text-sm">
+                            <i class="fa-solid fa-basket-shopping text-3xl mb-3 text-slate-600"></i>
+                            <p>Keranjang Anda masih kosong.</p>
+                            <a href="products.html" class="inline-block mt-4 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition">
+                                Lihat Katalog Produk
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Order Summary (Right 1 Col) -->
-                <div>
-                    <div class="bg-card p-6 rounded-2xl border border-border sticky top-28">
-                        <h3 class="text-lg font-bold mb-4 border-b border-border pb-3">Ringkasan Pesanan</h3>
-                        
-                        <div class="space-y-3 text-sm text-slate-300 mb-6">
-                            <div class="flex justify-between">
-                                <span class="text-slate-400">Subtotal</span>
-                                <span id="cart-subtotal" class="font-semibold">Rp 0</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-slate-400">Pajak / Biaya Layanan</span>
-                                <span class="text-emerald-400 font-semibold">GRATIS</span>
-                            </div>
+                <!-- SUMMARY CARD -->
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 h-fit space-y-6">
+                    <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-4">Ringkasan Pesanan</h3>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between text-slate-400">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal" class="font-semibold text-slate-200">Rp0</span>
                         </div>
-
-                        <div class="border-t border-border pt-4 mb-6 flex justify-between items-center">
-                            <span class="font-bold text-lg">Total Pembayaran</span>
-                            <span id="cart-total" class="font-extrabold text-xl text-accent">Rp 0</span>
+                        <div class="flex justify-between text-slate-400">
+                            <span>Biaya Layanan & Administrasi</span>
+                            <span class="font-semibold text-slate-200">Rp0</span>
                         </div>
+                        <div class="border-t border-slate-800 pt-3 flex justify-between text-sm font-bold text-white">
+                            <span>Total Investasi</span>
+                            <span id="cart-total" class="text-indigo-400">Rp0</span>
+                        </div>
+                    </div>
 
-                        <a href="checkout.html" id="btn-to-checkout" class="block w-full py-4 bg-accent hover:bg-accentHover text-dark text-center font-bold rounded-xl transition-all shadow-lg shadow-accent/20">
-                            Lanjut ke Pembayaran <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    <a href="checkout.html" id="btn-checkout" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl text-center block transition shadow-lg shadow-indigo-600/20">
+                        Lanjut ke Checkout
+                    </a>
+
+                    <div class="text-center pt-2">
+                        <a href="products.html" class="text-xs text-slate-400 hover:text-white transition">
+                            <i class="fa-solid fa-arrow-left mr-1"></i> Tambah Layanan Lain
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
-    </main>
+    </section>
 
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 py-8 text-xs text-center">
+        <p>&copy; 2026 Bali Bagus Dev Studio. All rights reserved.</p>
+    </footer>
+
+    <!-- SCRIPTS EKSISTING -->
     <script src="assets/js/app.js"></script>
     <script src="assets/js/cart-engine.js"></script>
-    <script>
-        function renderCartPage() {
-            const container = document.getElementById('cart-items-container');
-            const cart = CartEngine.getCart();
-
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="bg-card p-12 rounded-2xl border border-border text-center">
-                        <i class="fa-solid fa-basket-shopping text-5xl text-slate-600 mb-4 block"></i>
-                        <h3 class="text-xl font-bold mb-2">Keranjang Anda Kosong</h3>
-                        <p class="text-slate-400 text-sm mb-6">Jelajahi produk digital kami dan tambahkan asset yang Anda butuhkan.</p>
-                        <a href="products.html" class="inline-block px-6 py-3 bg-accent text-dark font-bold rounded-xl text-sm">Lihat Katalog Produk</a>
-                    </div>
-                `;
-                document.getElementById('btn-to-checkout').classList.add('opacity-50', 'pointer-events-none');
-            } else {
-                container.innerHTML = cart.map(item => `
-                    <div class="bg-card p-6 rounded-2xl border border-border flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 bg-dark rounded-xl border border-border flex items-center justify-center text-accent font-bold text-xl">
-                                <i class="fa-solid fa-box"></i>
-                            </div>
-                            <div>
-                                <span class="text-xs text-slate-400 font-semibold uppercase">${item.type}</span>
-                                <h4 class="font-bold text-lg text-white">${item.name}</h4>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-6">
-                            <span class="font-extrabold text-accent">Rp ${item.price.toLocaleString('id-ID')}</span>
-                            <button onclick="CartEngine.removeItem('${item.id}')" class="text-slate-500 hover:text-red-400 p-2 transition-colors">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
-                document.getElementById('btn-to-checkout').classList.remove('opacity-50', 'pointer-events-none');
-            }
-
-            const total = CartEngine.getTotal();
-            document.getElementById('cart-subtotal').innerText = `Rp ${total.toLocaleString('id-ID')}`;
-            document.getElementById('cart-total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
-        }
-
-        document.addEventListener('DOMContentLoaded', renderCartPage);
-    </script>
 </body>
 </html>
