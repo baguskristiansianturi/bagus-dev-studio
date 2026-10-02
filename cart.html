@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja | Bali Bagus Dev Studio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0B0F17',
+                        card: '#131B2A',
+                        border: '#1E293B',
+                        accent: '#10B981',
+                        accentHover: '#059669',
+                        brandPurple: '#6366F1'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-border/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-brandPurple flex items-center justify-center font-extrabold text-dark text-xl">BB</div>
+                <div>
+                    <span class="text-lg font-bold block">BALI BAGUS</span>
+                    <span class="text-xs text-emerald-400 font-medium tracking-widest block uppercase">DEV STUDIO</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="products.html" class="text-sm font-medium text-slate-300 hover:text-accent">Lanjut Belanja</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold mb-8 flex items-center gap-3">
+                <i class="fa-solid fa-cart-shopping text-accent"></i> Keranjang Belanja Anda
+            </h1>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Cart Items List (Left 2 Cols) -->
+                <div class="lg:col-span-2 space-y-4" id="cart-items-container">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <!-- Order Summary (Right 1 Col) -->
+                <div>
+                    <div class="bg-card p-6 rounded-2xl border border-border sticky top-28">
+                        <h3 class="text-lg font-bold mb-4 border-b border-border pb-3">Ringkasan Pesanan</h3>
+                        
+                        <div class="space-y-3 text-sm text-slate-300 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Subtotal</span>
+                                <span id="cart-subtotal" class="font-semibold">Rp 0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Pajak / Biaya Layanan</span>
+                                <span class="text-emerald-400 font-semibold">GRATIS</span>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-border pt-4 mb-6 flex justify-between items-center">
+                            <span class="font-bold text-lg">Total Pembayaran</span>
+                            <span id="cart-total" class="font-extrabold text-xl text-accent">Rp 0</span>
+                        </div>
+
+                        <a href="checkout.html" id="btn-to-checkout" class="block w-full py-4 bg-accent hover:bg-accentHover text-dark text-center font-bold rounded-xl transition-all shadow-lg shadow-accent/20">
+                            Lanjut ke Pembayaran <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/cart-engine.js"></script>
+    <script>
+        function renderCartPage() {
+            const container = document.getElementById('cart-items-container');
+            const cart = CartEngine.getCart();
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-card p-12 rounded-2xl border border-border text-center">
+                        <i class="fa-solid fa-basket-shopping text-5xl text-slate-600 mb-4 block"></i>
+                        <h3 class="text-xl font-bold mb-2">Keranjang Anda Kosong</h3>
+                        <p class="text-slate-400 text-sm mb-6">Jelajahi produk digital kami dan tambahkan asset yang Anda butuhkan.</p>
+                        <a href="products.html" class="inline-block px-6 py-3 bg-accent text-dark font-bold rounded-xl text-sm">Lihat Katalog Produk</a>
+                    </div>
+                `;
+                document.getElementById('btn-to-checkout').classList.add('opacity-50', 'pointer-events-none');
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="bg-card p-6 rounded-2xl border border-border flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-dark rounded-xl border border-border flex items-center justify-center text-accent font-bold text-xl">
+                                <i class="fa-solid fa-box"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 font-semibold uppercase">${item.type}</span>
+                                <h4 class="font-bold text-lg text-white">${item.name}</h4>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <span class="font-extrabold text-accent">Rp ${item.price.toLocaleString('id-ID')}</span>
+                            <button onclick="CartEngine.removeItem('${item.id}')" class="text-slate-500 hover:text-red-400 p-2 transition-colors">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('btn-to-checkout').classList.remove('opacity-50', 'pointer-events-none');
+            }
+
+            const total = CartEngine.getTotal();
+            document.getElementById('cart-subtotal').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+            document.getElementById('cart-total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', renderCartPage);
+    </script>
+</body>
+</html>

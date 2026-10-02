@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Profil | Dashboard Client | Bali Bagus Dev Studio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0B0F17',
+                        card: '#131B2A',
+                        border: '#1E293B',
+                        accent: '#10B981',
+                        accentHover: '#059669',
+                        brandPurple: '#6366F1'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body class="bg-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="border-b border-border/80 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-brandPurple flex items-center justify-center font-extrabold text-dark text-xl">BB</div>
+                <div>
+                    <span class="text-lg font-bold block">BALI BAGUS</span>
+                    <span class="text-xs text-emerald-400 font-medium tracking-widest block uppercase">DEV STUDIO</span>
+                </div>
+            </a>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-2 text-sm text-slate-300 bg-card border border-border px-3 py-1.5 rounded-xl">
+                    <i class="fa-regular fa-user text-accent"></i>
+                    <span id="user-display-name">Client Member</span>
+                </div>
+                <button onclick="logout()" class="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 px-3 py-2 rounded-xl font-semibold transition-all">
+                    <i class="fa-solid fa-arrow-right-from-bracket mr-1"></i> Keluar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Dashboard Navigation Tabs -->
+            <div class="flex border-b border-border mb-8 overflow-x-auto">
+                <a href="my-downloads.html" class="px-6 py-3 text-slate-400 hover:text-white font-medium text-sm flex items-center gap-2 whitespace-nowrap transition-colors">
+                    <i class="fa-solid fa-download"></i> Produk & Unduhan
+                </a>
+                <a href="licenses.html" class="px-6 py-3 text-slate-400 hover:text-white font-medium text-sm flex items-center gap-2 whitespace-nowrap transition-colors">
+                    <i class="fa-solid fa-key"></i> Lisensi Key
+                </a>
+                <a href="settings.html" class="px-6 py-3 border-b-2 border-accent text-accent font-bold text-sm flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-gear"></i> Pengaturan Profil
+                </a>
+            </div>
+
+            <!-- Page Title -->
+            <div class="mb-8">
+                <h1 class="text-2xl sm:text-3xl font-extrabold">Pengaturan Akun</h1>
+                <p class="text-slate-400 text-sm mt-1">Perbarui informasi profil dan kata sandi akun Anda.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Profile Settings -->
+                <div class="bg-card p-6 rounded-2xl border border-border">
+                    <h3 class="text-lg font-bold mb-4 border-b border-border pb-3 flex items-center gap-2">
+                        <i class="fa-regular fa-id-card text-accent"></i> Informasi Pribadi
+                    </h3>
+
+                    <form onsubmit="updateProfile(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Nama Lengkap</label>
+                            <input type="text" id="set-name" value="Budi Santoso" class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Alamat Email</label>
+                            <input type="email" id="set-email" value="budi@example.com" class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Nomor WhatsApp</label>
+                            <input type="tel" value="081234567890" class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <button type="submit" class="px-6 py-2.5 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl text-xs transition-all">
+                            Simpan Perubahan Profil
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Password Settings -->
+                <div class="bg-card p-6 rounded-2xl border border-border">
+                    <h3 class="text-lg font-bold mb-4 border-b border-border pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-accent"></i> Keamanan Kata Sandi
+                    </h3>
+
+                    <form onsubmit="updatePassword(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Kata Sandi Saat Ini</label>
+                            <input type="password" placeholder="••••••••" required class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Kata Sandi Baru</label>
+                            <input type="password" placeholder="••••••••" required class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Konfirmasi Kata Sandi Baru</label>
+                            <input type="password" placeholder="••••••••" required class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <button type="submit" class="px-6 py-2.5 bg-dark hover:bg-border text-white border border-border font-bold rounded-xl text-xs transition-all">
+                            Perbarui Kata Sandi
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="p-6 border-t border-border/80 text-center text-xs text-slate-500">
+        &copy; 2026 Bali Bagus Dev Studio. All rights reserved.
+    </footer>
+
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const session = JSON.parse(localStorage.getItem('bb_user_session'));
+            if (session) {
+                if (session.name) {
+                    document.getElementById('user-display-name').innerText = session.name;
+                    document.getElementById('set-name').value = session.name;
+                }
+                if (session.email) {
+                    document.getElementById('set-email').value = session.email;
+                }
+            }
+        });
+
+        function updateProfile(e) {
+            e.preventDefault();
+            const name = document.getElementById('set-name').value;
+            const email = document.getElementById('set-email').value;
+
+            const session = JSON.parse(localStorage.getItem('bb_user_session')) || {};
+            session.name = name;
+            session.email = email;
+            localStorage.setItem('bb_user_session', JSON.stringify(session));
+
+            alert('Profil berhasil diperbarui!');
+            location.reload();
+        }
+
+        function updatePassword(e) {
+            e.preventDefault();
+            alert('Kata sandi berhasil diubah!');
+        }
+
+        function logout() {
+            localStorage.removeItem('bb_user_session');
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html>

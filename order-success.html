@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaksi Berhasil | Bali Bagus Dev Studio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0B0F17',
+                        card: '#131B2A',
+                        border: '#1E293B',
+                        accent: '#10B981',
+                        accentHover: '#059669',
+                        brandPurple: '#6366F1'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <main class="flex-grow py-16 flex items-center justify-center">
+        <div class="max-w-xl w-full mx-auto px-4">
+            <div class="bg-card p-8 md:p-10 rounded-2xl border border-border text-center shadow-2xl">
+                
+                <div class="w-20 h-20 bg-accent/10 border border-accent/20 rounded-full flex items-center justify-center text-accent text-3xl mx-auto mb-6 glow-effect">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <span class="text-xs font-bold text-accent uppercase tracking-widest block mb-1">Pembayaran Diterima</span>
+                <h1 class="text-2xl md:text-3xl font-extrabold mb-2">Terima Kasih Atas Pesanan Anda!</h1>
+                <p class="text-slate-400 text-sm mb-6">Order ID: <span id="ord-id" class="text-white font-mono font-bold">#BB-000000</span></p>
+
+                <div class="bg-dark p-4 rounded-xl border border-border text-left mb-6 space-y-3 text-sm">
+                    <div class="flex justify-between">
+                        <span class="text-slate-400">Pembeli:</span>
+                        <span id="ord-cust" class="font-semibold text-white">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-400">Total Dibayar:</span>
+                        <span id="ord-total" class="font-bold text-accent">-</span>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-left mb-8">
+                    <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">Akses File & Lisensi:</h4>
+                    <p class="text-xs text-slate-300">File produk digital & lisensi telah ditambahkan ke Dashboard Klien Anda. Tanda terima pembayaran juga telah dikirim via Email.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="dashboard/my-downloads.html" class="flex-1 py-3.5 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl text-sm transition-all text-center">
+                        <i class="fa-solid fa-download mr-1"></i> Akses Download File
+                    </a>
+                    <a href="index.html" class="flex-1 py-3.5 bg-dark hover:bg-border text-slate-300 font-semibold rounded-xl text-sm border border-border transition-all text-center">
+                        Kembali ke Beranda
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lastOrder = JSON.parse(localStorage.getItem('bb_last_order'));
+            if (lastOrder) {
+                document.getElementById('ord-id').innerText = '#' + lastOrder.orderId;
+                document.getElementById('ord-cust').innerText = lastOrder.customer.name;
+                document.getElementById('ord-total').innerText = 'Rp ' + lastOrder.total.toLocaleString('id-ID');
+            }
+        });
+    </script>
+</body>
+</html>

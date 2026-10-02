@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubungi Kami & Informasi Pembayaran | Bali Bagus Dev Studio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0B0F17',
+                        card: '#131B2A',
+                        border: '#1E293B',
+                        accent: '#10B981',
+                        accentHover: '#059669',
+                        brandPurple: '#6366F1'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="border-b border-border/80 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-brandPurple flex items-center justify-center font-extrabold text-dark text-xl">BB</div>
+                <div>
+                    <span class="text-lg font-bold block">BALI BAGUS</span>
+                    <span class="text-xs text-emerald-400 font-medium tracking-widest block uppercase">DEV STUDIO</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-300">
+                <a href="index.html" class="hover:text-accent transition-colors" data-i18n="nav_home">Beranda</a>
+                <a href="services.html" class="hover:text-accent transition-colors" data-i18n="nav_services">Layanan</a>
+                <a href="products.html" class="hover:text-accent transition-colors" data-i18n="nav_products">Produk Digital</a>
+                <a href="pricing.html" class="hover:text-accent transition-colors" data-i18n="nav_pricing">Harga & Paket</a>
+                <a href="about.html" class="hover:text-accent transition-colors" data-i18n="nav_about">Tentang Kami</a>
+                <a href="contact.html" class="text-accent" data-i18n="nav_contact">Kontak</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div class="flex bg-card border border-border rounded-xl p-1 text-xs">
+                    <button onclick="setLanguage('id')" class="lang-btn px-2.5 py-1 rounded-lg transition-all" data-lang="id">ID</button>
+                    <button onclick="setLanguage('en')" class="lang-btn px-2.5 py-1 rounded-lg transition-all" data-lang="en">EN</button>
+                </div>
+                
+                <a href="login.html" class="text-sm font-semibold text-slate-300 hover:text-white px-3 py-2" data-i18n="nav_login">Masuk</a>
+                <a href="register.html" class="bg-accent hover:bg-accentHover text-dark font-bold text-sm px-4 py-2 rounded-xl transition-all shadow-md shadow-accent/10" data-i18n="nav_register">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white">Hubungi Tim Kami</h1>
+                <p class="text-slate-400 text-base mt-4">Punya pertanyaan seputar produk digital, pembayaran transfer BCA, atau butuh jasa penyesuaian custom software?</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <!-- Contact Form -->
+                <div class="bg-card p-8 rounded-2xl border border-border shadow-xl">
+                    <h3 class="text-xl font-bold mb-6 text-white">Kirim Pesan</h3>
+                    <form onsubmit="alert('Pesan Anda berhasil terkirim!'); event.preventDefault();" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Nama Lengkap</label>
+                            <input type="text" required placeholder="Nama Anda" class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Alamat Email</label>
+                            <input type="email" required placeholder="nama@email.com" class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Pesan / Subjek</label>
+                            <textarea rows="4" required placeholder="Tuliskan pertanyaan atau kebutuhan proyek Anda..." class="w-full bg-dark border border-border rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-accent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl text-sm transition-all shadow-lg shadow-accent/20">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Official Payment Account Info & Support -->
+                <div class="space-y-6">
+                    <!-- Bank BCA Card -->
+                    <div class="bg-card p-8 rounded-2xl border border-accent/40 relative overflow-hidden shadow-2xl">
+                        <div class="absolute top-0 right-0 bg-accent text-dark text-[10px] font-extrabold px-3 py-1 rounded-bl-xl uppercase tracking-wider">REKENING RESMI</div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-blue-600/20 text-blue-400 rounded-xl flex items-center justify-center font-extrabold text-lg">BCA</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Bank Central Asia (BCA)</h4>
+                                <p class="text-xs text-slate-400">Metode Pembayaran Transfer Bank Manual</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 bg-dark/60 p-5 rounded-xl border border-border">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Atas Nama (Account Holder):</span>
+                                <span class="text-base font-bold text-emerald-400">BAGUS KRISTIAN SIANTURI</span>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 block">Nomor Rekening:</span>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="text-xl font-mono font-bold text-white tracking-wider">7725-1829-30</span>
+                                    <button onclick="copyToClipboard('7725182930')" class="px-3 py-1.5 bg-card hover:bg-border border border-border rounded-lg text-xs text-slate-300 font-semibold transition-all">
+                                        <i class="fa-regular fa-copy mr-1"></i> Salin
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-4"><i class="fa-solid fa-circle-info text-accent mr-1"></i> Mohon pastikan nama pemilik rekening tujuan adalah **Bagus Kristian Sianturi** saat melakukan pembayaran.</p>
+                    </div>
+
+                    <!-- Direct Support Info -->
+                    <div class="bg-card p-6 rounded-2xl border border-border space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-lg"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <h5 class="text-xs text-slate-400">WhatsApp / Telegram Fast Response</h5>
+                                <a href="https://wa.me/6281234567890" target="_blank" class="text-sm font-bold text-white hover:text-accent">+62 812-3456-7890</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center text-lg"><i class="fa-regular fa-envelope"></i></div>
+                            <div>
+                                <h5 class="text-xs text-slate-400">Dukungan Email Official</h5>
+                                <a href="mailto:support@balibagusdev.com" class="text-sm font-bold text-white hover:text-accent">support@balibagusdev.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-6 border-t border-border/80 text-center text-xs text-slate-500">
+        &copy; 2026 Bali Bagus Dev Studio. All rights reserved.
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail | Bali Bagus Dev Studio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0B0F17',
+                        card: '#131B2A',
+                        border: '#1E293B',
+                        accent: '#10B981',
+                        accentHover: '#059669',
+                        brandPurple: '#6366F1'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-dark/80 backdrop-blur-md border-b border-border/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-brandPurple flex items-center justify-center font-extrabold text-dark text-xl">BB</div>
+                <div>
+                    <span class="text-lg font-bold block">BALI BAGUS</span>
+                    <span class="text-xs text-emerald-400 font-medium tracking-widest block uppercase">DEV STUDIO</span>
+                </div>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="cart.html" class="relative p-2.5 rounded-xl bg-card border border-border text-slate-300">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-accent text-dark text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="products.html" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-accent mb-8 transition-colors">
+                <i class="fa-solid fa-arrow-left text-xs"></i> Kembali ke Katalog Produk
+            </a>
+
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Main Details (Left 2 Cols) -->
+                <div class="lg:col-span-2">
+                    <div class="h-96 bg-card rounded-2xl border border-border flex items-center justify-center mb-8">
+                        <span class="text-slate-500 font-bold text-lg"><i class="fa-solid fa-desktop text-accent mr-2"></i> High-Resolution Interactive Preview Frame</span>
+                    </div>
+
+                    <h1 class="text-3xl font-extrabold mb-4">Bali Villa Booking UI Kit & Engine</h1>
+                    <p class="text-slate-400 text-base leading-relaxed mb-8">
+                        UI Kit premium berstandar internasional yang dirancang khusus untuk vila, resort, dan rental properti di Bali. Sudah dilengkapi dengan komponen Tailwind CSS yang siap diintegrasikan dengan backend apapun.
+                    </p>
+
+                    <h3 class="text-xl font-bold mb-4">Fitur Utama Termasuk:</h3>
+                    <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i> 15+ Screen UI Figma File lengkap dengan Design System</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i> Kode Front-End Clean Tailwind CSS + JavaScript Native</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i> System Booking Form dengan Integrasi WhatsApp Checkout</li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent"></i> Fully Responsive (Mobile, Tablet, Desktop)</li>
+                    </ul>
+                </div>
+
+                <!-- Checkout Sidebar (Right 1 Col) -->
+                <div>
+                    <div class="bg-card p-6 rounded-2xl border border-border sticky top-28">
+                        <span class="text-xs text-emerald-400 font-bold uppercase tracking-wider block mb-2">Commercial License</span>
+                        <div class="text-3xl font-extrabold text-white mb-6">Rp 350.000</div>
+
+                        <div class="space-y-4 mb-6 text-sm text-slate-300 border-y border-border py-4">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Tipe File:</span>
+                                <span class="font-semibold">Figma + HTML/Tailwind</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Akses File:</span>
+                                <span class="font-semibold text-accent">Instan setelah bayar</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Update Gratis:</span>
+                                <span class="font-semibold">Selamanya</span>
+                            </div>
+                        </div>
+
+                        <button onclick="CartEngine.addItem('villa-ui-kit', 'Bali Villa Booking UI Kit', 350000, 'Figma + Tailwind')" class="w-full py-4 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl transition-all mb-3 shadow-lg shadow-accent/20 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i> Tambah ke Keranjang
+                        </button>
+                        <a href="cart.html" class="block w-full py-3 bg-dark hover:bg-border text-slate-200 text-center font-semibold rounded-xl text-sm border border-border transition-all">
+                            Beli Langsung Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/cart-engine.js"></script>
+</body>
+</html>

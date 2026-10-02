@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unduhan Saya | Dashboard Client | Bali Bagus Dev Studio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0B0F17',
+                        card: '#131B2A',
+                        border: '#1E293B',
+                        accent: '#10B981',
+                        accentHover: '#059669',
+                        brandPurple: '#6366F1'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+<body class="bg-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="border-b border-border/80 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent to-brandPurple flex items-center justify-center font-extrabold text-dark text-xl">BB</div>
+                <div>
+                    <span class="text-lg font-bold block">BALI BAGUS</span>
+                    <span class="text-xs text-emerald-400 font-medium tracking-widest block uppercase">DEV STUDIO</span>
+                </div>
+            </a>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-2 text-sm text-slate-300 bg-card border border-border px-3 py-1.5 rounded-xl">
+                    <i class="fa-regular fa-user text-accent"></i>
+                    <span id="user-display-name">Client Member</span>
+                </div>
+                <button onclick="logout()" class="text-xs bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 px-3 py-2 rounded-xl font-semibold transition-all">
+                    <i class="fa-solid fa-arrow-right-from-bracket mr-1"></i> Keluar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Dashboard Navigation Tabs -->
+            <div class="flex border-b border-border mb-8 overflow-x-auto">
+                <a href="my-downloads.html" class="px-6 py-3 border-b-2 border-accent text-accent font-bold text-sm flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-download"></i> Produk & Unduhan
+                </a>
+                <a href="licenses.html" class="px-6 py-3 text-slate-400 hover:text-white font-medium text-sm flex items-center gap-2 whitespace-nowrap transition-colors">
+                    <i class="fa-solid fa-key"></i> Lisensi Key
+                </a>
+                <a href="settings.html" class="px-6 py-3 text-slate-400 hover:text-white font-medium text-sm flex items-center gap-2 whitespace-nowrap transition-colors">
+                    <i class="fa-solid fa-gear"></i> Pengaturan Profil
+                </a>
+            </div>
+
+            <!-- Page Title -->
+            <div class="mb-8">
+                <h1 class="text-2xl sm:text-3xl font-extrabold">File & Asset Digital Anda</h1>
+                <p class="text-slate-400 text-sm mt-1">Unduh source code, update versi terbaru, dan dokumentasi produk yang telah Anda beli.</p>
+            </div>
+
+            <!-- Products List -->
+            <div class="space-y-4">
+                <!-- Product Card 1 -->
+                <div class="bg-card p-6 rounded-2xl border border-border flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 bg-dark rounded-xl border border-border flex items-center justify-center text-accent font-bold text-2xl flex-shrink-0">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xs bg-accent/10 text-accent font-bold px-2.5 py-0.5 rounded">v2.4.0</span>
+                                <span class="text-xs text-slate-400">Diperbarui: Jan 2026</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-white">SaaS Starter Kit Node.js & React</h3>
+                            <p class="text-xs text-slate-400 mt-1">Termasuk Source Code Lengkap + SQL Schema + Panduan Deploy</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <a href="#" class="px-4 py-2.5 bg-dark hover:bg-border text-slate-300 font-semibold rounded-xl text-xs border border-border transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-book text-slate-400"></i> Dokumentasi
+                        </a>
+                        <a href="#" class="px-5 py-2.5 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl text-xs transition-all shadow-md shadow-accent/10 flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Unduh File (.ZIP)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-card p-6 rounded-2xl border border-border flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 bg-dark rounded-xl border border-border flex items-center justify-center text-brandPurple font-bold text-2xl flex-shrink-0">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xs bg-indigo-500/10 text-indigo-400 font-bold px-2.5 py-0.5 rounded">v1.1.0</span>
+                                <span class="text-xs text-slate-400">Diperbarui: Des 2025</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-white">E-Commerce Mobile App Template (Flutter)</h3>
+                            <p class="text-xs text-slate-400 mt-1">UI Kit Flutter + Integrasi Payment Gateway Midtrans</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <a href="#" class="px-4 py-2.5 bg-dark hover:bg-border text-slate-300 font-semibold rounded-xl text-xs border border-border transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-book text-slate-400"></i> Dokumentasi
+                        </a>
+                        <a href="#" class="px-5 py-2.5 bg-accent hover:bg-accentHover text-dark font-bold rounded-xl text-xs transition-all shadow-md shadow-accent/10 flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Unduh File (.ZIP)
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="p-6 border-t border-border/80 text-center text-xs text-slate-500">
+        &copy; 2026 Bali Bagus Dev Studio. All rights reserved.
+    </footer>
+
+    <script src="../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const session = JSON.parse(localStorage.getItem('bb_user_session'));
+            if (session && session.name) {
+                document.getElementById('user-display-name').innerText = session.name;
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('bb_user_session');
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html>
