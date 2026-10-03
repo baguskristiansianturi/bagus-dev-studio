@@ -6,7 +6,7 @@
     var wrap=header.querySelector(".max-w-7xl");
     if(!wrap) return;
     header.dataset.bdsReady="3";
-    header.classList.add("bds-header");
+    header.classList.add("bds-header");\n\n    /* Normalize the brand everywhere: Bagus Dev / Studio. */\n    var brand=wrap.querySelector(":scope > .bds-mainbar > a:first-child");\n    if(brand){\n      brand.classList.add("bds-brand");\n      var mark=brand.querySelector(":scope > div:first-child");\n      if(mark){mark.classList.add("bds-brand-mark");}\n      var name=brand.querySelector(":scope > div:last-child");\n      if(name){\n        name.classList.add("bds-brand-name");\n        var spans=name.querySelectorAll("span");\n        if(spans[0]){spans[0].textContent="Bagus Dev";spans[0].classList.add("bds-brand-main");}\n        if(spans[1]){spans[1].textContent="Studio";spans[1].classList.add("bds-brand-sub");}\n      }\n    }
 
     /* Utility row: created once, never duplicated. */
     var utility=header.querySelector(".bds-utility");
