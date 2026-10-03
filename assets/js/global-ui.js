@@ -100,3 +100,30 @@
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init);
   else init();
 })();
+
+/* Premium page-to-page transition */
+(function(){
+  "use strict";
+  document.documentElement.classList.add("bds-motion-ready");
+  function enter(){
+    document.body.classList.add("bds-page-enter");
+    requestAnimationFrame(function(){requestAnimationFrame(function(){document.body.classList.remove("bds-page-enter");document.body.classList.add("bds-page-ready");});});
+  }
+  function links(){
+    document.addEventListener("click",function(e){
+      var a=e.target.closest("a[href]");
+      if(!a||e.defaultPrevented||a.target==="_blank"||a.hasAttribute("download")) return;
+      var href=a.getAttribute("href");
+      if(!href||href.charAt(0)==="#"||/^(mailto:|tel:|javascript:)/i.test(href)) return;
+      try{
+        var u=new URL(href,location.href);
+        if(u.origin!==location.origin||u.pathname===location.pathname&&u.search===location.search) return;
+      }catch(err){return}
+      e.preventDefault();
+      document.body.classList.add("bds-page-enter");
+      setTimeout(function(){location.href=href},240);
+    });
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",function(){enter();links()});
+  else{enter();links()}
+})();
