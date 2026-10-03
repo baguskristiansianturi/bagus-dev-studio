@@ -6,7 +6,22 @@
     var wrap=header.querySelector(".max-w-7xl");
     if(!wrap) return;
     header.dataset.bdsReady="3";
-    header.classList.add("bds-header");\n\n    /* Normalize the brand everywhere: Bagus Dev / Studio. */\n    var brand=wrap.querySelector(":scope > .bds-mainbar > a:first-child");\n    if(brand){\n      brand.classList.add("bds-brand");\n      var mark=brand.querySelector(":scope > div:first-child");\n      if(mark){mark.classList.add("bds-brand-mark");}\n      var name=brand.querySelector(":scope > div:last-child");\n      if(name){\n        name.classList.add("bds-brand-name");\n        var spans=name.querySelectorAll("span");\n        if(spans[0]){spans[0].textContent="Bagus Dev";spans[0].classList.add("bds-brand-main");}\n        if(spans[1]){spans[1].textContent="Studio";spans[1].classList.add("bds-brand-sub");}\n      }\n    }
+    header.classList.add("bds-header");
+
+    /* Normalize the brand everywhere: Bagus Dev / Studio. */
+    var brand=wrap.querySelector(":scope > .bds-mainbar > a:first-child");
+    if(brand){
+      brand.classList.add("bds-brand");
+      var mark=brand.querySelector(":scope > div:first-child");
+      if(mark){mark.classList.add("bds-brand-mark");}
+      var name=brand.querySelector(":scope > div:last-child");
+      if(name){
+        name.classList.add("bds-brand-name");
+        var spans=name.querySelectorAll("span");
+        if(spans[0]){spans[0].textContent="Bagus Dev";spans[0].classList.add("bds-brand-main");}
+        if(spans[1]){spans[1].textContent="Studio";spans[1].classList.add("bds-brand-sub");}
+      }
+    }
 
     /* Utility row: created once, never duplicated. */
     var utility=header.querySelector(".bds-utility");
