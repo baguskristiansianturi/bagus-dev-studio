@@ -339,3 +339,21 @@ pre{max-width:100%;overflow:auto}
   .bds-mainbar>.flex:last-child>a{display:none!important}
   .bds-mainbar{gap:4px!important}
 }
+
+
+/* GLOBAL MOTION + BRAND LOCK */
+:root{--bds-ease:cubic-bezier(.22,.61,.36,1);--bds-fast:180ms;--bds-smooth:320ms}
+html{scroll-behavior:smooth;scroll-padding-top:124px}
+a,button,input,textarea,select,.glass-card,.glass-panel,
+section .bg-slate-900.border,section .bg-slate-950.border,section .bg-dark.border{
+  transition:color var(--bds-fast) var(--bds-ease),background-color var(--bds-smooth) var(--bds-ease),border-color var(--bds-smooth) var(--bds-ease),box-shadow var(--bds-smooth) var(--bds-ease),transform var(--bds-smooth) var(--bds-ease),opacity var(--bds-smooth) var(--bds-ease);
+}
+.bds-brand{display:flex!important;align-items:center!important;gap:12px!important;text-decoration:none!important;min-width:0}
+.bds-brand-mark{width:40px!important;height:40px!important;flex:0 0 40px!important;border-radius:12px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:var(--bds-gold)!important;color:#111!important;font-weight:800!important;box-shadow:0 8px 24px rgba(201,169,107,.16)!important}
+.bds-brand-name{display:flex!important;flex-direction:column!important;justify-content:center!important;line-height:1!important;min-width:0}
+.bds-brand-main{display:block!important;font-size:18px!important;font-weight:800!important;letter-spacing:-.02em!important;color:var(--bds-text)!important;line-height:1.05!important}
+.bds-brand-sub{display:block!important;margin-top:5px!important;padding-left:1px!important;font-size:10px!important;font-weight:700!important;letter-spacing:.24em!important;color:var(--bds-muted)!important;line-height:1!important}
+.bds-brand:hover .bds-brand-main{color:var(--bds-gold-2)!important}
+.bds-mainbar nav a,.bds-mainbar>.flex:last-child>a{transition:color var(--bds-fast) var(--bds-ease),background-color var(--bds-smooth) var(--bds-ease),transform var(--bds-fast) var(--bds-ease),opacity var(--bds-fast) var(--bds-ease)!important}
+@media(max-width:767px){html{scroll-padding-top:68px}.bds-brand-main{font-size:17px!important}.bds-brand-sub{margin-top:5px!important;font-size:9px!important;letter-spacing:.22em!important}.bds-brand-mark{width:38px!important;height:38px!important;flex-basis:38px!important}.bds-mobile-panel{transition:opacity var(--bds-smooth) var(--bds-ease),transform var(--bds-smooth) var(--bds-ease),visibility var(--bds-smooth) var(--bds-ease)!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:0ms!important;animation-duration:0ms!important;animation-iteration-count:1!important}}
