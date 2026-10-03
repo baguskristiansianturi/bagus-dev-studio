@@ -1,60 +1,30 @@
-/* Bagus Dev Studio — Global UI System v1.0 */
+/* Bagus Dev Studio — Premium Studio UI */
 :root{
-  --bds-bg:#0b0f14;--bds-surface:#111820;--bds-surface-2:#151e28;
-  --bds-border:rgba(148,163,184,.16);--bds-text:#f8fafc;--bds-muted:#94a3b8;
-  --bds-accent:#10b981;--bds-accent-2:#6366f1;--bds-max:1140px;
+ --bds-bg:#080b0f;--bds-bg2:#0d1218;--bds-surface:rgba(255,255,255,.045);
+ --bds-surface-strong:#121922;--bds-line:rgba(255,255,255,.10);
+ --bds-text:#f7f8f5;--bds-muted:#9aa4ad;--bds-soft:#cbd1d4;
+ --bds-accent:#c7a96b;--bds-accent-soft:#e0c98f;--bds-green:#79a88a;
+ --bds-max:1140px;--bds-radius:18px;
 }
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{margin:0;min-width:320px;overflow-x:hidden;background:var(--bds-bg);color:var(--bds-text)}
-img,svg,video,canvas{max-width:100%;height:auto}
-button,a,input,select,textarea{font:inherit}
-a{overflow-wrap:anywhere}
-button,a[role="button"],input[type="button"],input[type="submit"]{min-height:44px}
-.max-w-7xl{max-width:var(--bds-max)!important;width:100%}
-header.bds-header{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(11,15,20,.88)!important;border-bottom:1px solid var(--bds-border)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.bds-utility{height:34px;border-bottom:1px solid rgba(148,163,184,.10);font-size:11px;color:#94a3b8}
-.bds-utility-inner{max-width:var(--bds-max);height:100%;margin:auto;padding:0 16px;display:flex;align-items:center;justify-content:flex-end;gap:16px}
-.bds-utility a{color:#94a3b8;text-decoration:none;min-height:28px;display:inline-flex;align-items:center;gap:6px}
-.bds-utility a:hover{color:#fff}
-.bds-mainbar{min-height:66px}
-.bds-menu-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--bds-border);border-radius:12px;background:rgba(255,255,255,.04);color:#fff;cursor:pointer}
-.bds-mobile-panel{display:none}
-.bds-mobile-panel.is-open{display:block}
-.bds-mobile-panel nav{display:flex!important;flex-direction:column!important;gap:4px!important;padding:12px 0 6px!important}
-.bds-mobile-panel nav a,.bds-mobile-tools a{display:flex!important;align-items:center;min-height:46px;padding:10px 12px;border-radius:10px;color:#cbd5e1;text-decoration:none}
-.bds-mobile-panel nav a:hover,.bds-mobile-tools a:hover{background:rgba(255,255,255,.06);color:#fff}
-.bds-mobile-tools{border-top:1px solid var(--bds-border);padding:8px 0 12px;display:grid;grid-template-columns:1fr 1fr}
-.bds-mobile-tools a{font-size:12px}
-main>section:first-child{scroll-margin-top:110px}
-section{overflow:clip}
-.rounded-2xl,.rounded-xl{overflow:hidden}
-[class*="grid-cols-"]{min-width:0}
-@media (max-width:767px){
-  .bds-utility{display:none}
-  .bds-mainbar{min-height:64px}
-  .bds-menu-toggle{display:inline-flex}
-  header.bds-header nav{display:none!important}
-  header.bds-header .bds-consultation{display:none!important}
-  header.bds-header .max-w-7xl{padding-left:12px!important;padding-right:12px!important}
-  header.bds-header .flex.items-center.gap-4{gap:6px!important}
-  header.bds-header .flex.items-center.gap-3{gap:8px!important}
-  header.bds-header .w-10{width:38px!important;height:38px!important}
-  header.bds-header .text-lg{font-size:15px!important}
-  section.py-20,section.py-16,section.py-12{padding-top:52px!important;padding-bottom:52px!important}
-  section.py-28,section.lg\:py-28{padding-top:64px!important;padding-bottom:64px!important}
-  h1{font-size:clamp(2rem,9vw,3rem)!important;line-height:1.08!important}
-  h2{font-size:clamp(1.55rem,7vw,2.15rem)!important;line-height:1.12!important}
-  .text-7xl,.text-6xl{font-size:clamp(2rem,9vw,3rem)!important}
-  .text-5xl{font-size:clamp(1.9rem,8vw,2.5rem)!important}
-  .px-8{padding-left:20px!important;padding-right:20px!important}
-  .p-8{padding:20px!important}
-  .gap-8{gap:20px!important}
-  .gap-6{gap:16px!important}
-}
-@media (min-width:768px) and (max-width:1199px){
-  .max-w-7xl{max-width:calc(100% - 40px)!important}
-}
-@media (min-width:1200px){
-  .max-w-7xl{max-width:var(--bds-max)!important}
+html{background:var(--bds-bg);color-scheme:dark}
+body{background:radial-gradient(900px 500px at 85% -10%,rgba(199,169,107,.10),transparent 60%),linear-gradient(180deg,var(--bds-bg),#090d12 55%,#080b0f);color:var(--bds-text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 75%);z-index:-1}
+header.bds-header{background:rgba(8,11,15,.78)!important;border-bottom:1px solid var(--bds-line)!important;box-shadow:0 8px 30px rgba(0,0,0,.20);backdrop-filter:blur(22px)!important}
+.bds-utility{color:#8f999f;border-color:rgba(255,255,255,.07)}
+.bds-utility a{color:#9da6ac;transition:.2s ease}.bds-utility a:hover{color:var(--bds-accent-soft)}
+.bds-mainbar{min-height:68px}
+.bds-menu-toggle{border-color:var(--bds-line);background:rgba(255,255,255,.035);transition:.2s ease}.bds-menu-toggle:hover{border-color:rgba(199,169,107,.45);color:var(--bds-accent-soft)}
+.bds-mobile-panel{border-top:1px solid var(--bds-line);background:rgba(9,13,18,.98)}
+.bds-mobile-panel nav a,.bds-mobile-tools a{color:#d2d7da;transition:.2s ease}.bds-mobile-panel nav a:hover,.bds-mobile-tools a:hover{background:rgba(199,169,107,.08);color:var(--bds-accent-soft)}
+.bds-mobile-tools{border-color:var(--bds-line)}
+main{background:transparent}
+section{position:relative}
+section:not(:first-child):before{content:"";position:absolute;top:0;left:50%;width:min(1140px,calc(100% - 32px));height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(199,169,107,.18),transparent);opacity:.7}
+.glass-panel,.rounded-2xl,.rounded-xl{border-color:var(--bds-line)!important}
+.glass-panel{background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025))!important;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+a:not(.bds-mobile-panel a){transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease}
+button:hover,[role=button]:hover{transform:translateY(-1px)}
+@media(max-width:767px){
+ body:before{background-size:36px 36px;opacity:.11}
+ section:not(:first-child):before{width:calc(100% - 28px)}
 }
